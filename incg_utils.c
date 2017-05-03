@@ -61,7 +61,7 @@ __inline void incg_Vec_Normalize2( double x[2] )
 //
 // Function to project a 3D vector on a plane given the plane equation
 //
-__inline void incg_Vec_PlaneProject( double x[3], double p[4] )
+__inline void incg_Vec_PlaneProject( const double p[4], double x[3] )
 {
    double t;
 
@@ -70,5 +70,20 @@ __inline void incg_Vec_PlaneProject( double x[3], double p[4] )
    x[0] -= t*p[0];
    x[1] -= t*p[1];
    x[2] -= t*p[2];
+}
+
+//
+// Function to project a point in 3D space on a plane given the plane equation
+//
+__inline void incg_Vec_PlaneProjectPoint( const double p[4], double x[3] )
+{
+   double t;
+
+   t = x[0]*p[0] + x[1]*p[1] + x[2]*p[2];
+
+   t = -(p[3] + t);
+   x[0] += t*p[0];
+   x[1] += t*p[1];
+   x[2] += t*p[2];
 }
 
