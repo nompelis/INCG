@@ -12,3 +12,5 @@ __inline void incg_Vec_Normalize3( double x[2] );
 
 __inline void incg_Vec_Normalize2( double x[2] );
 
+__inline void incg_Vec_PlaneProject( double x[3], double p[4] );
+
