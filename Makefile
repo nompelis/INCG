@@ -1,4 +1,4 @@
-DEBUG = -D_NO_DEBUG_
+DEBUG = -D   _DEBUG_
 
 ###### C
 CC = gcc
@@ -11,7 +11,8 @@ LIBS = -lm
 all:
 	$(CC) -c $(DEBUG) $(COPTS) incg_utils.c
 	$(CC) -c $(DEBUG) $(COPTS) incg_tet.c
-	$(CC)    $(DEBUG) $(COPTS) test.c incg_tet.o incg_utils.o  $(LIBS)
+	$(CC) -c $(DEBUG) $(COPTS) incg_tri.c
+	$(CC)    $(DEBUG) $(COPTS) test.c incg_tet.o incg_utils.o incg_tri.o $(LIBS)
 
 doc:
 	doxygen Doxyfile

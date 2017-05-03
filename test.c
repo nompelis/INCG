@@ -4,6 +4,26 @@
 
 #include "incg_utils.h"
 #include "incg_tet.h"
+#include "incg_tri.h"
+
+//
+// a function to test whether a point falls within a triangle
+//
+void test_point_point_in_triangle()
+{
+   double x1[3] = { 1.0, 0.0, 0.0 };
+   double x2[3] = { 1.0, 1.0, 0.0 };
+   double x3[3] = { 1.0, 0.5, 1.0 };
+   double xp[3];
+   int iret;
+
+
+   xp[0] = 1.0;
+   xp[1] = 1.5;
+   xp[2] = 0.5;
+   iret = incg_Tri_PointInside( x1, x2, x3, xp );
+   printf("Testing point in triangle: %d \n", iret );
+}
 
 //
 // a function to write the fundamental Cartesian basis in a (tecplot) file
@@ -81,7 +101,6 @@ void test_point_projection_on_plane()
    fclose(fp);
 }
 
-
 int main(int argc, char **argv)
 {
    int iret;
@@ -117,6 +136,10 @@ int main(int argc, char **argv)
 
    // test point projection on a plane
    (void) test_point_projection_on_plane();
+   printf("--------\n");
+
+   // test whether point falls within a triangle
+   test_point_point_in_triangle();
    printf("--------\n");
 
    return(0);
