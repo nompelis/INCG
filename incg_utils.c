@@ -87,3 +87,28 @@ __inline void incg_Vec_PlaneProjectPoint( const double p[4], double x[3] )
    x[2] += t*p[2];
 }
 
+//
+// Function to return the equation for a plane given 3 3D points
+// The plane equation is: "\vec{x} \dot \vec{n} + \alpha = 0"
+//
+__inline void incg_Vec_PlaneEquation(
+   const double p1[3],
+   const double p2[3],
+   const double p3[3],
+   double pl[4] )
+{
+   double dx1[3],dx2[3];
+
+   dx1[0] = p2[0] - p1[0];
+   dx1[1] = p2[1] - p1[1];
+   dx1[2] = p2[2] - p1[2];
+
+   dx2[0] = p3[0] - p1[0];
+   dx2[1] = p3[1] - p1[1];
+   dx2[2] = p3[2] - p1[2];
+
+   incg_Vec_CrossProduct( dx1, dx2, pl );
+   incg_Vec_Normalize3( pl );
+   pl[3] = - incg_Vec_DotProduct( p1, pl );
+}
+

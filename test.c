@@ -57,7 +57,7 @@ void test_point_projection_on_plane()
    double x3[3] = { 1.0, 1.0, 1.0 };
    double x4[3] = { 1.0, 0.0, 1.0 };
    double xp[3];
-   double dx1[3],dx2[3],pl[4];
+   double pl[4];
 
 
    printf("Projecting a point on a plane\n");
@@ -81,17 +81,7 @@ void test_point_projection_on_plane()
    fprintf(fp,"1 1 1 \n");
 
    // equation of the plane
-   dx1[0] = x2[0] - x1[0];
-   dx1[1] = x2[1] - x1[1];
-   dx1[2] = x2[2] - x1[2];
-   dx2[0] = x3[0] - x2[0];
-   dx2[1] = x3[1] - x2[1];
-   dx2[2] = x3[2] - x2[2];
-   pl[0] =   dx1[1]*dx2[2] - dx1[2]*dx2[1];
-   pl[1] = - dx1[0]*dx2[2] + dx1[2]*dx2[0];
-   pl[2] =   dx1[0]*dx2[1] - dx1[1]*dx2[0];
-   incg_Vec_Normalize3( pl );
-   pl[3] = -(pl[0]*x1[0] + pl[1]*x1[1] + pl[2]*x1[2]);
+   incg_Vec_PlaneEquation( x1, x2, x3, pl );
 
    incg_Vec_PlaneProjectPoint( pl, xp );
    fprintf(fp,"zone T=\"projected point\", N=1,E=1,F=FEPOINT,ET=TRIANGLE\n");

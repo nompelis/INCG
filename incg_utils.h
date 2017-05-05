@@ -16,3 +16,9 @@ __inline void incg_Vec_PlaneProject( const double p[4], double x[3] );
 
 __inline void incg_Vec_PlaneProjectPoint( const double p[4], double x[3] );
 
+__inline void incg_Vec_PlaneEquation(
+   const double p1[3],
+   const double p2[3],
+   const double p3[3],
+   double pl[4] );
+
