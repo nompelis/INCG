@@ -2,7 +2,7 @@
 
  INCG v0.1
  A library of essential tools for computational geometry
- Copyright 2017 Ioannis Nompelis
+ Copyright 2017-2019 Ioannis Nompelis
 
 This is the growing collection of my tools for performing calculations that
 involve geometry in multiple dimensions. It is meant to be a very lean, fast

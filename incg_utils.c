@@ -3,6 +3,9 @@
 #include <unistd.h>
 #include <math.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 //
 // Function to calculate the cross-product of 3D vectors
@@ -111,4 +114,8 @@ __inline void incg_Vec_PlaneEquation(
    incg_Vec_Normalize3( pl );
    pl[3] = - incg_Vec_DotProduct( p1, pl );
 }
+
+#ifdef __cplusplus
+}
+#endif
 

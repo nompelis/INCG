@@ -1,4 +1,7 @@
 
+#ifndef _INCG_UTILS_H_
+#define _INCG_UTILS_H_
+
 __inline void incg_Vec_CrossProduct(
    const double x[3],
    const double y[3],
@@ -21,4 +24,6 @@ __inline void incg_Vec_PlaneEquation(
    const double p2[3],
    const double p3[3],
    double pl[4] );
+
+#endif
 

@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "incg_tet.h"
 #include "incg_utils.h"
 
@@ -58,3 +62,42 @@ int incg_Tet_PointInside(
    return(1);
 }
 
+
+//
+// Function to calculate the volume of the tetrahedron
+// Expects the tetrahedron to be given with its nodes ordered in a conventional
+// 1,2,3 counter-clockwise base and 4 being the opposite vertex.
+//
+double incg_Tet_CalcVolume(
+   const double x1[3],
+   const double x2[3],
+   const double x3[3],
+   const double x4[3] )
+{
+   double vol;
+   double dx1[3],dx2[3],dx3[3];
+
+
+   dx1[0] = x2[0] - x1[0];
+   dx1[1] = x2[1] - x1[1];
+   dx1[2] = x2[2] - x1[2];
+
+   dx2[0] = x3[0] - x1[0];
+   dx2[1] = x3[1] - x1[1];
+   dx2[2] = x3[2] - x1[2];
+
+   dx3[0] = x4[0] - x1[0];
+   dx3[1] = x4[1] - x1[1];
+   dx3[2] = x4[2] - x1[2];
+
+   vol = ( dx1[1]*dx2[2] - dx2[1]*dx1[2])*dx3[0] +
+         (-dx1[0]*dx2[2] + dx2[0]*dx1[2])*dx3[1] +
+         ( dx1[0]*dx2[1] - dx2[0]*dx1[1])*dx3[2];
+   vol = vol / 6.0;
+
+   return( vol );
+}
+
+#ifdef __cplusplus
+}
+#endif

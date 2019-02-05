@@ -104,6 +104,9 @@ int main(int argc, char **argv)
    double pl[4] = {-1.0,-1.0, 1.0, 0.0 };  // plane equation un-normalized
 
    printf("--------\n");
+   printf("Volume of tetrahedron: %lf \n", incg_Tet_CalcVolume( x1,x2,x3,x4 ) );
+
+   printf("--------\n");
 
    iret = incg_Tet_PointInside( x1,x2,x3,x4, xo );
    if( iret == 1 ) printf("Point falls within \n");

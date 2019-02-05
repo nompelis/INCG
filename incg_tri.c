@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "incg_tri.h"
 #include "incg_utils.h"
 
@@ -125,4 +129,8 @@ int incg_Tri_PointInside(
 
    return(1);
 }
+
+#ifdef __cplusplus
+}
+#endif
 
