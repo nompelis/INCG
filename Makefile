@@ -12,6 +12,7 @@ all:
 	$(CC) -c $(DEBUG) $(COPTS) incg_utils.c
 	$(CC) -c $(DEBUG) $(COPTS) incg_tet.c
 	$(CC) -c $(DEBUG) $(COPTS) incg_tri.c
+	$(CC) -c $(DEBUG) $(COPTS) incg_arclength.c
 	$(CC)    $(DEBUG) $(COPTS) test.c incg_tet.o incg_utils.o incg_tri.o $(LIBS)
 
 doc:
