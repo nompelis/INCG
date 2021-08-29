@@ -5,6 +5,7 @@
 #include "incg_utils.h"
 #include "incg_tet.h"
 #include "incg_tri.h"
+#include "incg_mesh.h"
 
 //
 // a function to test whether a point falls within a triangle
@@ -103,6 +104,8 @@ int main(int argc, char **argv)
    double pr[3] = { 0.0, 0.0, 1.0 };
    double pl[4] = {-1.0,-1.0, 1.0, 0.0 };  // plane equation un-normalized
 
+   mesh_t mesh;
+
    printf("--------\n");
    printf("Volume of tetrahedron: %lf \n", incg_Tet_CalcVolume( x1,x2,x3,x4 ) );
 
@@ -133,6 +136,12 @@ int main(int argc, char **argv)
 
    // test whether point falls within a triangle
    test_point_point_in_triangle();
+   printf("--------\n");
+
+   // test creating a cube mesh and refining it uniformly
+   printf("Testing creating and uniformly refining a mesh \n");
+   (void) incg_MakeMesh_Cube( &mesh );
+   (void) incg_RefineMesh_Uniform( &mesh );
    printf("--------\n");
 
    return(0);

@@ -2,7 +2,7 @@
 
  INCG v0.1
  A library of essential tools for computational geometry
- Copyright 2017-2019 Ioannis Nompelis
+ Copyright 2017-2022 Ioannis Nompelis
 
 This is the growing collection of my tools for performing calculations that
 involve geometry in multiple dimensions. It is meant to be a very lean, fast
@@ -14,4 +14,11 @@ build new ones in the order that I need them in my work.
 Documentation with Doxygen will be included in future updates.
 
 IN 2017/03/28
+
+
+Added support for a "mesh" object that is made of triangles. Presently, only
+a uniform mesh refinement method is included, and other methods of refinement
+will be added.
+
+IN 2022/08/29
 
