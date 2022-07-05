@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <math.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -129,6 +130,29 @@ int incg_Tri_PointInside(
 
    return(1);
 }
+
+
+//
+// Function to pick a random point inside the triangle with uniform probability
+// given two numbers randomly drawn from a uniform distribution.
+//
+void incg_Tri_MakeRandomPoint(
+   const double p1[3],
+   const double p2[3],
+   const double p3[3],
+   double xp[3] )
+{
+   double r0 = 1.0/((double) RAND_MAX);    // should be static or a const
+   double r1 = ((double) rand())*r0;
+   double r2 = ((double) rand())*r0;
+   r1 = sqrt(r1);
+   double t1 = 1.0 - r1, t2 = r1*(1.0 - r2), t3 = r1*r2;
+
+   xp[0] = t1 * p1[0] + t2 * p2[0] + t3 * p3[0];
+   xp[1] = t1 * p1[1] + t2 * p2[1] + t3 * p3[1];
+   xp[2] = t1 * p1[0] + t2 * p2[2] + t3 * p3[2];
+}
+
 
 #ifdef __cplusplus
 }

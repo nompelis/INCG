@@ -8,6 +8,27 @@
 #include "incg_mesh.h"
 
 //
+// a function to generate a random point inside a triangle
+//
+void test_point_random_in_triangle()
+{
+   double x1[3] = { 1.0, 0.0, 0.0 };
+   double x2[3] = { 1.0, 1.0, 0.0 };
+   double x3[3] = { 1.0, 1.0, 1.0 };
+   double xp[3];
+
+   incg_Tri_MakeRandomPoint( x1, x2, x3, xp );
+   printf("Point in triangle: %lf %lf %lf (z-y<0 ? %lf) \n",
+           xp[0], xp[1], xp[2], xp[2]-xp[1] );
+   incg_Tri_MakeRandomPoint( x1, x2, x3, xp );
+   printf("Point in triangle: %lf %lf %lf (z-y<0 ? %lf) \n",
+           xp[0], xp[1], xp[2], xp[2]-xp[1] );
+   incg_Tri_MakeRandomPoint( x1, x2, x3, xp );
+   printf("Point in triangle: %lf %lf %lf (z-y<0 ? %lf) \n",
+           xp[0], xp[1], xp[2], xp[2]-xp[1] );
+}
+
+//
 // a function to test whether a point falls within a triangle
 //
 void test_point_point_in_triangle()
@@ -136,6 +157,10 @@ int main(int argc, char **argv)
 
    // test whether point falls within a triangle
    test_point_point_in_triangle();
+   printf("--------\n");
+
+   // test for creatng a random point inside a triangle
+   test_point_random_in_triangle();
    printf("--------\n");
 
    // test creating a cube mesh and refining it uniformly

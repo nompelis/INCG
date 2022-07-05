@@ -20,5 +20,9 @@ Added support for a "mesh" object that is made of triangles. Presently, only
 a uniform mesh refinement method is included, and other methods of refinement
 will be added.
 
-IN 2022/08/29
+IN 2021/08/29
 
+
+Added a function to generate a random point inside a triangle.
+
+IN 2022/07/05
