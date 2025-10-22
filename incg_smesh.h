@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifndef _SMESH_H_
-#define _SMESH_H_
+#ifndef _INCG_SMESH_H_
+#define _INCG_SMESH_H_
 
 #include <map>
 #include <vector>
 #include <list>
 
-//#include "inalloc.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 
 #include "debug.h"
 

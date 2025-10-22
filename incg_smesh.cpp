@@ -3,12 +3,18 @@
 #include <math.h>
 #include <unistd.h>
 
-#include "smesh.h"
-#include "smesh_uid_factory.h"
+#include "incg_smesh.h"
+#include "incg_smesh_uid_factory.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+//
+// A global variable to handle a singleton-style factory
+//
+
+sMesh_uid_factory* global_UID_factory = NULL;
 
 //----------------------------------------------------------------------------
 

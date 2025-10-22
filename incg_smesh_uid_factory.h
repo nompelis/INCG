@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifndef _SMESH_UID_FACTORY_H_
-#define _SMESH_UID_FACTORY_H_
+#ifndef _INCG_SMESH_UID_FACTORY_H_
+#define _INCG_SMESH_UID_FACTORY_H_
 
 
 #include <vector>

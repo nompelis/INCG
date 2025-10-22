@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "smesh_uid_factory.h"
-#include "smesh.h"
+#include "incg_smesh_uid_factory.h"
+#include "incg_smesh.h"
 
 #ifdef _USE_HDF_
 #include <hdf5.h>
