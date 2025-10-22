@@ -1,14 +1,23 @@
 DEBUG = -D   _DEBUG_
 
 ###### C
-CC = gcc
-COPTS = -g -Wall -fPIC -O0
+ CC = gcc
+ COPTS = -Wall -fPIC -O0
+
+###### C++
+ CXX = g++
+ CXXOPTS = -fPIC -O2 -Wall
+
+ COPTS += -g
+ CXXOPTS += -g
 
 ###### libraries
-LIBS = -lm 
+ LIBS = -lm 
 
 
 all:
+	$(CXX) -c $(DEBUG) $(CXXOPTS) smesh.cpp
+	$(CXX) -c $(DEBUG) $(CXXOPTS) smesh_uid_factory.cpp
 	$(CC) -c $(DEBUG) $(COPTS) incg_utils.c
 	$(CC) -c $(DEBUG) $(COPTS) incg_tet.c
 	$(CC) -c $(DEBUG) $(COPTS) incg_tri.c
