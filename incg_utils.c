@@ -10,7 +10,7 @@ extern "C" {
 //
 // Function to calculate the cross-product of 3D vectors
 //
-__inline void incg_Vec_CrossProduct(
+void incg_Vec_CrossProduct(
    const double x[3],
    const double y[3],
    double z[3] )
@@ -24,7 +24,7 @@ __inline void incg_Vec_CrossProduct(
 //
 // Function to calculate the dot-product of 3D vectors
 //
-__inline double incg_Vec_DotProduct(
+double incg_Vec_DotProduct(
    const double x[3],
    const double y[3] )
 {
@@ -35,7 +35,7 @@ __inline double incg_Vec_DotProduct(
 //
 // Function to normalize a 3D vector
 //
-__inline void incg_Vec_Normalize3( double x[3] )
+void incg_Vec_Normalize3( double x[3] )
 {
    double t;
 
@@ -50,7 +50,7 @@ __inline void incg_Vec_Normalize3( double x[3] )
 //
 // Function to normalize a 2D vector
 //
-__inline void incg_Vec_Normalize2( double x[2] )
+void incg_Vec_Normalize2( double x[2] )
 {
    double t;
 
@@ -64,7 +64,7 @@ __inline void incg_Vec_Normalize2( double x[2] )
 //
 // Function to project a 3D vector on a plane given the plane equation
 //
-__inline void incg_Vec_PlaneProject( const double p[4], double x[3] )
+void incg_Vec_PlaneProject( const double p[4], double x[3] )
 {
    double t;
 
@@ -78,7 +78,7 @@ __inline void incg_Vec_PlaneProject( const double p[4], double x[3] )
 //
 // Function to project a point in 3D space on a plane given the plane equation
 //
-__inline void incg_Vec_PlaneProjectPoint( const double p[4], double x[3] )
+void incg_Vec_PlaneProjectPoint( const double p[4], double x[3] )
 {
    double t;
 
@@ -94,7 +94,7 @@ __inline void incg_Vec_PlaneProjectPoint( const double p[4], double x[3] )
 // Function to return the equation for a plane given 3 3D points
 // The plane equation is: "\vec{x} \dot \vec{n} + \alpha = 0"
 //
-__inline void incg_Vec_PlaneEquation(
+void incg_Vec_PlaneEquation(
    const double p1[3],
    const double p2[3],
    const double p3[3],
