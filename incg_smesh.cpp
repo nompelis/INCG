@@ -1332,6 +1332,9 @@ int sMesh_Core::dumpEdges( const char filename[], int iop ) const
 #ifdef _DEBUG_
    char FUNC[] = "dumpEdges";
 #endif
+   const int iskip=0x01, ivec=0x02;
+   double frac=0.95;
+
    fprintf( stdout, " [sMesh_Core:%s]  Dumping edges for Gnuplot-ing\n",FUNC );
    FILE *fp = fopen( filename, "w" );
    fprintf( fp, "# Edges after Rule 3 subdivision\n" );
@@ -1339,20 +1342,32 @@ int sMesh_Core::dumpEdges( const char filename[], int iop ) const
    for( eit = edge_uid_map.begin(); eit != edge_uid_map.end(); ++eit ) {
       sMesh_Edge* ep = (sMesh_Edge*) eit->second;
       int ic=1;   // default is to print
-      if( ep->isSplit() == 1 && iop == 1 ) ic=0;   // skip split edges
+      if( ep->isSplit() == 1 && (iop & iskip) ) ic=0;   // skip split edges
 
       if( ic ) {
-         sMesh_Node* np = ep->getNodePtr( 1 );
-         fprintf( fp, " %lf %lf \n", np->x, np->y );
-                     np = ep->getNodePtr( 2 );
-         fprintf( fp, " %lf %lf \n", np->x, np->y );
-         fprintf( fp, "\n" );
-         fprintf( stdout, " [%ld]  %ld %ld   bc: %d   ", ep->getUID(),
-                  ep->getNodePtr(1)->getUID(), ep->getNodePtr(2)->getUID(),
-                  ep->isBoundary() );
-         if( ep->getNodePtr(1)->getUID() > ep->getNodePtr(2)->getUID() )
-             { fprintf( stdout, "BAD! \n" ); } else { fprintf( stdout, "\n"); }
+         if( iop & ivec ) {
+            sMesh_Node* np = ep->getNodePtr( 1 );
+            double xa[3] = {np->x, np->y, np->z};
+                        np = ep->getNodePtr( 2 );
+            double xb[3] = {np->x, np->y, np->z};
+            fprintf( fp, " %lf %lf \n", frac*xa[0] + (1.0-frac)*xb[0],
+                                        frac*xa[1] + (1.0-frac)*xb[1] );
+            fprintf( fp, " %lf %lf \n", frac*xb[0] + (1.0-frac)*xa[0],
+                                        frac*xb[1] + (1.0-frac)*xa[1] );
+            fprintf( fp, "\n" );
+         } else {
+            sMesh_Node* np = ep->getNodePtr( 1 );
+            fprintf( fp, " %lf %lf \n", np->x, np->y );
+                        np = ep->getNodePtr( 2 );
+            fprintf( fp, " %lf %lf \n", np->x, np->y );
+            fprintf( fp, "\n" );
+            fprintf( stdout, " [%ld]  %ld %ld   bc: %d   ", ep->getUID(),
+                     ep->getNodePtr(1)->getUID(), ep->getNodePtr(2)->getUID(),
+                     ep->isBoundary() );
+            if( ep->getNodePtr(1)->getUID() > ep->getNodePtr(2)->getUID() )
+                { fprintf( stdout, "BAD!\n" ); }else{ fprintf( stdout, "\n"); }
          }
+      }
    }
    fclose(fp);
 
